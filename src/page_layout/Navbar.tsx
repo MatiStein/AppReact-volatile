@@ -9,7 +9,7 @@ function Navbar() {
         <h1>NYSE Market</h1>
         <Router >
             <nav style={{ borderBottom: "solid 1px", paddingBottom: "1rem" }}>
-                <Route path ="/homepage">HomePage |{" "}
+                <Route path ="/homepage">HomePage</Route > |{" "}
                 <Route path ="/stockspage">StocksPage</Route > |{" "}
                 <Route path ="/analyzepage">AnalyzePage</Route > |{" "}
                 <Route path ="/search">SearchPage</Route > |{" "}
