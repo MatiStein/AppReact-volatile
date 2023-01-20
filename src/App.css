@@ -17,9 +17,9 @@
 
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   justify-content: flex-start;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(10px + 1vmin);
 }
 
 .App-link {

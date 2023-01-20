@@ -10,8 +10,10 @@ function Navbar() {
         <h1>NYSE Market</h1>
         <nav>
             <ul className="header-list">
+                <NavLink to="/home">Home</NavLink>
                 <NavLink to="/stocks">Stocks</NavLink>
                 <NavLink to="/analyze">Analyze</NavLink>
+                <NavLink to="/search">Search</NavLink>
             </ul>
         </nav>
         {/* <Router  >

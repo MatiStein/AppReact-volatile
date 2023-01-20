@@ -30,7 +30,6 @@ const StocksPage = () => {
 
     return (
         <div>
-                <div>Stocks Page</div>
                 <div className='stocks-page-container'>
                     <StocksList stockChangeHandler={getCurrentStockFromStockList} stocks={stocksList} />
                     <StockDetails stock={currentStock}/>
