@@ -1,15 +1,16 @@
 class Config {
     public supportEmail = 'matistein@gmail.com';
-    public stocksUrl = 'http://127.0.0.1:8000/api/v1/stocks/';
-    public analyzeUrl = 'http://127.0.0.1:8000/api/v1/analyzed/';
-    public analyzeQueryUrl = 'http://127.0.0.1:8000/api/v1/analyze_query/';
-    public get_data_url = 'http://127.0.0.1:8000/api/v1/get_data/';
-    public stock_list_url = 'http://127.0.0.1:8000/api/v1/ticker_list';
-    public user_ticker_url = 'http://127.0.0.1:8000/api/v1/user_ticker';
-    public registerUrl = 'http://127.0.0.1:8000:/api/v1/register/';
-    public loginUrl = 'http://127.0.0.1:8000/api/v1\token';
-    public refreshUrl = 'http://127.0.0.1:8000/api/v1/token/refresh';
-    public userUrl = 'http://127.0.0.1:8000/api/v1/user/';
+    public baseUrl = "http://127.0.0.1:8000/api/v1/";
+    public stocksUrl = this.baseUrl +'stocks/';
+    public analyzeUrl = this.baseUrl + 'analyzed/';
+    public analyzeQueryUrl = this.baseUrl + 'analyze_query/';
+    public get_data_url = this.baseUrl + 'get_data/';
+    public stock_list_url = this.baseUrl + 'ticker_list';
+    public user_ticker_url = this.baseUrl + 'user_ticker';
+    public registerUrl = this.baseUrl + 'register/';
+    public loginUrl = this.baseUrl + 'token';
+    public refreshUrl = this.baseUrl + 'token/refresh';
+    public userUrl = this.baseUrl + 'user/';
 
 }
 const config = new Config();
