@@ -2,11 +2,11 @@ import React from 'react';
 import  Navbar  from './page_layout/Navbar';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-import StocksPage from './pages/StocksPage/StocksPage';
 import AnalyzePage from './pages/AnalyzePage/AnalyzePage';
 import HomePage from './pages/HomePage/HomePage';
 import SearchPage from './pages/SearchPage/SearchPage';
 import SelfAnalyzePage from './pages/SelfAnalyzePage/SelfAnalyzePage';
+import StocksPage from './pages/StocksPage/Stockspage';
 
 
 function App() {

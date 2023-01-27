@@ -23,7 +23,7 @@ const StockDetails = (props:{stock:string}) => {
 
     return (
         <div>
-            <h1>{props.stock}</h1>
+            <h2>{props.stock}</h2>
             <table>
                 <tr>
                     <th>Ticker Name</th>

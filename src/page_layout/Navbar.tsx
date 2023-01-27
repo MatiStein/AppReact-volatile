@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom';
 function Navbar() {
     return (
         <div>
-        <h2>Volatile Means Σίγμα</h2>
+        <h1>Volatile Means Σίγμα</h1>
         <nav>
             <ul className="header-list">
                 <NavLink to="/home">Home</NavLink>

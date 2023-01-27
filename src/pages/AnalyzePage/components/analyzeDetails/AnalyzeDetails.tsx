@@ -27,7 +27,7 @@ const AnalyzeDetails = (props:any) => {
     return (
     
         <div>
-            <h1>{props.stock}</h1>
+            <h2>{props.stock}</h2>
             <table>
                 <tr>
                     <th>Ticker Name</th>

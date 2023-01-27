@@ -1,6 +1,21 @@
-
+/* 
 
 .stocks-list {
     display: flex;
     flex-direction: column;
+} */
+
+.stocks-list-container {
+    text-align: center;
+    margin: 15px;
+}
+
+.stocks-list {
+    font-size: 15px;
+    padding: 11px;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+.stock-ticker {
+    padding: 10px;
 }

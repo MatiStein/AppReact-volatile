@@ -22,7 +22,7 @@ const SelfAnalyzeDetails = (props:{stock:string}) => {
         }
   return (
     <div>
-        <h1>{props.stock}</h1>
+        <h2>{props.stock}</h2>
         <label htmlFor='from_date'>From Date</label>
         <input onChange={(e) => setFromDate(e.target.value)} type="date" id='from_date' name='from_date' />
         <label htmlFor='to_date'>To Date</label>
