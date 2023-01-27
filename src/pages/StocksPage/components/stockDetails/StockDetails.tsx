@@ -25,13 +25,13 @@ const StockDetails = (props:{stock:string}) => {
         <div>
             <h1>{props.stock}</h1>
             <table>
-                <th>
-                    <td>Ticker Name</td>
-                    <td>Open Price</td>
-                    <td>Close Price</td>
-                    <td>Volume</td>
-                    <td>Time</td>
-                </th>
+                <tr>
+                    <th>Ticker Name</th>
+                    <th>Open Price</th>
+                    <th>Close Price</th>
+                    <th>Volume</th>
+                    <th>Time</th>
+                </tr>
                 {stockDetails.map((stockDate:any) => {
                     return <tr>
                         <td>{stockDate.ticker}</td>

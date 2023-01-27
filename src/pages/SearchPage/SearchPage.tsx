@@ -1,5 +1,5 @@
 import React from 'react';
-import config from '../Utils/Config';
+import config from '../../Utils/Config';
 
 
 const SearchPage = () => {

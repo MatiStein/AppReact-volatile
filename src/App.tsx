@@ -3,9 +3,10 @@ import  Navbar  from './page_layout/Navbar';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import StocksPage from './pages/StocksPage/StocksPage';
-import AnalyzePage from './pages/AnalyzePage';
-import HomePage from './pages/HomePage';
-import SearchPage from './pages/SearchPage';
+import AnalyzePage from './pages/AnalyzePage/AnalyzePage';
+import HomePage from './pages/HomePage/HomePage';
+import SearchPage from './pages/SearchPage/SearchPage';
+import SelfAnalyzePage from './pages/SelfAnalyzePage/SelfAnalyzePage';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path='/home' element={<HomePage />}/>
         <Route path='/stocks' element={<StocksPage />}/>
         <Route path='/analyze' element={<AnalyzePage />}/>
+        <Route path='/self_analyze' element={<SelfAnalyzePage />}/>
         <Route path='/search' element={<SearchPage />}/>
       </Routes>
 

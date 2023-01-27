@@ -2,7 +2,6 @@ table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
-  
 }
 
 td,
@@ -16,4 +15,3 @@ tr:nth-child(even) {
   background-color: #dddddd;
   width: 180px;
 }
-

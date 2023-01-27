@@ -7,23 +7,16 @@ import { NavLink } from 'react-router-dom';
 function Navbar() {
     return (
         <div>
-        <h1>NYSE Market</h1>
+        <h2>Volatile Means Σίγμα</h2>
         <nav>
             <ul className="header-list">
                 <NavLink to="/home">Home</NavLink>
                 <NavLink to="/stocks">Stocks</NavLink>
                 <NavLink to="/analyze">Analyze</NavLink>
+                <NavLink to="/self_analyze">Self Analyze</NavLink>
                 <NavLink to="/search">Search</NavLink>
             </ul>
         </nav>
-        {/* <Router  >
-            <nav style={{ borderBottom: "solid 1px", paddingBottom: "1rem" }}>
-                <Route path ="/homepage">HomePage</Route > |{" "}
-                <Route path ="/stockspage">StocksPage</Route > |{" "}
-                <Route path ="/analyzepage">AnalyzePage</Route > |{" "}
-                <Route path ="/search">SearchPage</Route > |{" "}
-            </nav>
-            </Router> */}
         </div>
     );
 }

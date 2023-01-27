@@ -2,14 +2,13 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import StocksList from '../../page_layout/StocksList';
 import config from '../../Utils/Config';
-import StockDetails from './components/stockDetails/StockDetails';
-import "./StocksPage.css";
+import AnalyzeDetails from './components/analyzeDetails/AnalyzeDetails';
 
-const StocksPage = () => {
-    const [stocksList,setStocksList] = useState([])
-    const [currentStock,setCurrentStock] = useState("")
+const AnalyzePage = () => {
+  const [stocksList,setStocksList] = useState([])
+  const [currentStock,setCurrentStock] = useState("")
 
-    const getStocks = () => {
+  const getStocks = () => {
         const stocksListUrl = config.stock_list_url
         axios.get(stocksListUrl).then((response) => {
             setStocksList(response?.data?.Stocks)
@@ -32,11 +31,12 @@ const StocksPage = () => {
         <div>
                 <div className='stocks-page-container'>
                     <StocksList stockChangeHandler={getCurrentStockFromStockList} stocks={stocksList} />
-                    <StockDetails stock={currentStock}/>
+                    <AnalyzeDetails stock={currentStock}/>
                 </div>
         </div>
 
     )
+
 }
 
-export default StocksPage;
+export default AnalyzePage
