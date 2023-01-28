@@ -1,6 +1,6 @@
 
 Ticker News
-	url = f"https://api.polygon.io/v2/reference/news?ticker={XXXX}
+	url = f"https://api.polygon.io/v2/reference/news?ticker={XXXX}"
 	&published_utc.gte=2021-11-01&order=asc&limit=20&sort=published_utc&apiKey=nyd1QVoAqt4QVkHYYMqe_5kvFfN40G8D"
     
 	{gte} / {desc}

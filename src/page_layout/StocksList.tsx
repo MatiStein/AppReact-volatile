@@ -3,12 +3,19 @@ import "./StocksList.css";
 const StocksList = (props: {stocks:string[],stockChangeHandler:Function}) => {
     return (
         <div className="stocks-list-container">
-            <h1>Stocks:</h1>
+            <h3>Stocks:</h3>
             <select className="stocks-list" onChange={(event) => {props.stockChangeHandler(event.target.value)}}>
+                <option value="" disabled selected>Select a Ticker</option>
                 {props.stocks?.map((stockName:string) => {
-                    return <option className="stock-ticker" value={stockName}>{stockName}</option>
+                    return <option className="stock-ticker" value={stockName} >{stockName}</option>
                 })}
             </select>
+
+            {/* <select className="stocks-list" onChange={(event) => {props.stockChangeHandler(event.target.value)}}>
+                {props.stocks?.map((stockName:string) => {
+                    return <option className="stock-ticker" value={stockName} >{stockName}</option>
+                })}
+            </select> */}
         </div>
     )
 }
