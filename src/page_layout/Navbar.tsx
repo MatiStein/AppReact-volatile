@@ -16,6 +16,13 @@ function Navbar() {
                 <NavLink to="/self_analyze">Self Analyze</NavLink>
                 <NavLink to="/search">Search</NavLink>
             </ul>
+            </nav>
+            <nav>
+            <ul className="header-auth">
+                <NavLink to="/support">Support</NavLink>
+                <NavLink to="/login">Login</NavLink>
+                <NavLink to="/register">Register</NavLink>
+            </ul>
         </nav>
         </div>
     );

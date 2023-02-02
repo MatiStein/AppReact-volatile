@@ -21,6 +21,10 @@ const StockDetails = (props:{stock:string}) => {
         getStockDetails(props.stock)
     },[props.stock])
 
+    if (getStockDetails.length === 0) {
+        return <div>Please choose a Stock for details</div>;
+    }
+
     return (
         <div>
             <h2>{props.stock}</h2>

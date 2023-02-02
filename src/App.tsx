@@ -6,7 +6,7 @@ import AnalyzePage from './pages/AnalyzePage/AnalyzePage';
 import HomePage from './pages/HomePage/HomePage';
 import SearchPage from './pages/SearchPage/SearchPage';
 import SelfAnalyzePage from './pages/SelfAnalyzePage/SelfAnalyzePage';
-import StocksPage from './pages/StocksPage/Stockspage';
+import StocksPage from './pages/StocksPage/StocksPage';
 
 
 function App() {

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import StocksList from '../../page_layout/StocksList';
 import config from '../../Utils/Config';
 import AnalyzeDetails from './components/analyzeDetails/AnalyzeDetails';
+import "./AnalyzePage.css";
 
 const AnalyzePage = () => {
     const [stocksList, setStocksList] = useState([])

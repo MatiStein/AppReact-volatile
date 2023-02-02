@@ -1,4 +1,17 @@
+import axios from "axios";
+import { useState } from "react";
+import config from "../Utils/Config";
 import "./StocksList.css";
+
+const StocksPage = () => {
+    const [stocksList,setStocksList] = useState([])
+    const [currentStock,setCurrentStock] = useState("")
+
+    const getStocks = () => {
+        const stocksListUrl = config.stock_list_url
+        axios.get(stocksListUrl).then((response) => {
+            setStocksList(response?.data?.Stocks)
+        })}}
 
 const StocksList = (props: {stocks:string[],stockChangeHandler:Function}) => {
     return (
@@ -10,27 +23,8 @@ const StocksList = (props: {stocks:string[],stockChangeHandler:Function}) => {
                     return <option className="stock-ticker" value={stockName} >{stockName}</option>
                 })}
             </select>
-
-            {/* <select className="stocks-list" onChange={(event) => {props.stockChangeHandler(event.target.value)}}>
-                {props.stocks?.map((stockName:string) => {
-                    return <option className="stock-ticker" value={stockName} >{stockName}</option>
-                })}
-            </select> */}
         </div>
     )
 }
-
-// const StocksList = (props: {stocks:string[],stockChangeHandler:Function}) => {
-//     return (
-//         <div className="stocks-list-container">
-//             <h1>Stocks:</h1>
-//             <ol className="stocks-list">
-//                 {props.stocks?.map((stockName:string) => {
-//                     return <button className="stock-ticker" onClick={() => {props.stockChangeHandler(stockName)}}>{stockName}</button>
-//                 })}
-//             </ol>
-//         </div>
-//     )
-// }
 
 export default StocksList

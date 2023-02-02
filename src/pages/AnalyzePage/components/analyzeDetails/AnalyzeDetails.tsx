@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import config from '../../../../Utils/Config';
 
-const AnalyzeDetails = (props:any) => {
+const AnalyzeDetails = (props:{stock:string}) => {
     const [IrregularStockDetails,setIrregularStockDetails] = useState([])
     console.log(props.stock);
 
@@ -20,7 +20,7 @@ const AnalyzeDetails = (props:any) => {
         getStockDetails(props.stock)
     },[props.stock])
 
-    if (IrregularStockDetails.length == 0) {
+    if (IrregularStockDetails.length === 0) {
         return <div>No Irregular Stock Details for this stock</div>;
     }
 

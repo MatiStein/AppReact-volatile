@@ -28,13 +28,13 @@ const StocksPage = () => {
 
 
 
-    return (
-        <div>
-                <div className='stocks-page-container'>
-                    <StocksList stockChangeHandler={getCurrentStockFromStockList} stocks={stocksList} />
-                    <StockDetails stock={currentStock}/>
-                </div>
-        </div>
+	return (
+	<div>
+		<div className='stocks-page-container'>
+			<StocksList stockChangeHandler={getCurrentStockFromStockList} stocks={stocksList} />
+			<StockDetails stock={currentStock}/>
+		</div>
+	</div>
 
     )
 }
