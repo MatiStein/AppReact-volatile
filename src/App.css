@@ -53,3 +53,12 @@
     transform: translateY(0px);
   }
 }
+
+
+.profit-marker {
+  background-color: rgba(95, 253, 95, 0.743);
+}
+
+.loss-marker {
+  background-color: rgba(255, 61, 61, 0.768);
+}

@@ -1,35 +1,79 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import config from '../../../Utils/Config';
+import DatesFeature from '../../../page_layout/DatesFeature';
 
-const SelfAnalyzeDetails = (props:{stock:string}) => {
-    let yourDate = new Date();
-    const date = yourDate.toISOString().split('T')[0];
-    const [fromDate,setFromDate] = useState("")
-    const [toDate,setToDate] = useState("")
-    const [multiplier,setMultiplier] = useState(2.3263)
+const SelfAnalyzeDetails = (props: { stock: string }) => {
+  const date = new Date().toISOString().split("T")[0];
+  const [fromDate, setFromDate] = useState("")
+  const [toDate, setToDate] = useState(date)
+  const [multiplier, setMultiplier] = useState(2.365)
+  const [selfAnalyzedStocks, setSelfAnalyzedStocks] = useState<any>()
 
-    const sendSelfAnalyzeData = () => {
-        console.log(fromDate)
-        console.log(toDate)
-        console.log(multiplier)
-        console.log(props.stock)
+  const fromDateHandler = (date: string) => {
+    setFromDate(date)
+    console.log(date)
+  }
 
-        axios.get(config.analyzeQueryUrl + `?ticker=${props.stock}&from_date=${fromDate}&to_date=${toDate}&multi=${multiplier}`)
-        .then((response) => {
-            console.log(response)
-        })
-        }
+  const toDateHandler = (date: string) => {
+    setToDate(date)
+    console.log(date)
+  }
+
+  const multiplierHandler = (multi: number) => {
+    setMultiplier(multi)
+    console.log(multi)
+  }
+
+
+
+  const sendSelfAnalyzeData = () => {
+
+    if (!fromDate) {
+      return alert("Please fill in your date")
+    }
+
+    if (multiplier < 1) {
+      return alert("Multiplier must be greater than 1")
+    }
+
+    axios.get(config.analyzeQueryUrl + `?ticker=${props.stock}&from_date=${fromDate}&to_date=${toDate}&multi=${multiplier}`)
+      .then((response) => {
+        setSelfAnalyzedStocks(response?.data)
+        console.log(response)
+      })
+  }
   return (
     <div>
-        <h2>{props.stock}</h2>
-        <label htmlFor='from_date'>From Date</label>
-        <input onChange={(e) => setFromDate(e.target.value)} type="date" id='from_date' name='from_date' />
-        <label htmlFor='to_date'>To Date</label>
-        <input placeholder='dd-mm-yyyy' onChange={(e) => setToDate(e.target.value)} type="date" id='to_date' name='to_date' defaultValue={date} />
-        <label htmlFor='multiplier'>Multiplier</label>
-        <input onChange={(e) => setMultiplier(Number(e.target.value))} type="number" step="any" id='multiplier' name='multiplier' defaultValue={multiplier} />
-        <button onClick={() => sendSelfAnalyzeData()} >Submit</button>
+      <h2>{props.stock}</h2>
+      {props.stock && <div><DatesFeature fromDateSetter={fromDateHandler} addMultiplierFilter={true}
+        toDateSetter={toDateHandler} multiplierSetter={multiplierHandler} />
+        <button onClick={() => { sendSelfAnalyzeData() }}>Submit</button></div>}
+      {selfAnalyzedStocks?.stockDays?.length > 0 && <table>
+        <tr>
+          <th>Ticker Name</th>
+          <th>Volume</th>
+          <th>Average</th>
+          <th>Time</th>
+          <th>Open Price</th>
+          <th>Close Price</th>
+          <th>Rating</th>
+        </tr>
+        {selfAnalyzedStocks?.stockDays?.map((stockDate: any) => {
+          return <tr className={stockDate.open_price > stockDate.close_price ? "loss-marker" : "profit-marker"}>
+            <td>{stockDate.ticker}</td>
+            <td>{stockDate.volume}</td>
+            <td>{selfAnalyzedStocks.averageVolume}</td>
+            <td>{stockDate.time}</td>
+            <td>{stockDate.open_price}</td>
+            <td>{stockDate.close_price}</td>
+            <td>{stockDate.volume / selfAnalyzedStocks.averageVolume}</td>
+          </tr>
+        })}
+
+      </table>}
+
+
     </div>
   )
 }

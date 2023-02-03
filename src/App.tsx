@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage/HomePage';
 import SearchPage from './pages/SearchPage/SearchPage';
 import SelfAnalyzePage from './pages/SelfAnalyzePage/SelfAnalyzePage';
 import StocksPage from './pages/StocksPage/StocksPage';
+import AddStockPage from './pages/AddStockPage/AddStockPage';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path='/analyze' element={<AnalyzePage />}/>
         <Route path='/self_analyze' element={<SelfAnalyzePage />}/>
         <Route path='/search' element={<SearchPage />}/>
+        <Route path="/find_stock" element={<AddStockPage />}/>
       </Routes>
 
       </div>

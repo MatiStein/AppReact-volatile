@@ -40,7 +40,7 @@ const AnalyzeDetails = (props:{stock:string}) => {
                     <th>Close Price</th>
                 </tr>
                 {IrregularStockDetails.map((stockDate:any) => {
-                    return <tr>
+                    return <tr className={stockDate.open_price > stockDate.close_price ? "loss-marker" : "profit-marker"}>
                         <td>{stockDate.ticker}</td>
                         <td>{stockDate.volume}</td>
                         <td>{stockDate.avg_volume}</td>
