@@ -10,9 +10,6 @@ const StockDetails = (props: { stock: string }) => {
     const [fromDate, setFromDate] = useState("2020-01-01")
     const [toDate, setToDate] = useState(date)
 
-    const stockDate = new Date();
-    const dateOnly = stockDate.toLocaleDateString();
-
     const fromDateHandler = (date: string) => {
         setFromDate(date)
         console.log(date)
@@ -64,7 +61,7 @@ const StockDetails = (props: { stock: string }) => {
                         <td>{stockDate.open_price}</td>
                         <td>{stockDate.close_price}</td>
                         <td>{stockDate.volume}</td>
-                        <td>{dateOnly}</td>
+                        <td>{stockDate.time}</td>
                     </tr>
                 })}
 

@@ -10,11 +10,8 @@ const SelfAnalyzeDetails = (props: { stock: string }) => {
   const [toDate, setToDate] = useState(date)
   const [multiplier, setMultiplier] = useState(2.3263)
   const [selfAnalyzedStocks, setSelfAnalyzedStocks] = useState<any>()
-
-  const stockDate = new Date();
-  const dateOnly = stockDate.toLocaleDateString();
-
-  const fromDateHandler = (date: string) => {
+  
+    const fromDateHandler = (date: string) => {
     setFromDate(date)
     console.log(date)
   }
@@ -69,7 +66,7 @@ const SelfAnalyzeDetails = (props: { stock: string }) => {
             <td>{stockDate.volume}</td>
             <td>{selfAnalyzedStocks.averageVolume}</td>
             <td>{(stockDate.volume / selfAnalyzedStocks.averageVolume).toFixed(1)}</td>
-            <td>{dateOnly}</td>
+            <td>{stockDate.time}</td>
             <td>{stockDate.open_price}</td>
             <td>{stockDate.close_price}</td>
           </tr>

@@ -1,10 +1,14 @@
 import React from 'react'
 import config from '../../Utils/Config'
+import TrendingTickers from './components/TrendingTickers'
 
 const HomePage = () => {
   return (
-    <div>HomePage</div>
-  )
-}
+  
+    <div>HomePage
+      <TrendingTickers />
+    </div>
+  );
+};
 
-export default HomePage
+export default HomePage;

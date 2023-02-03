@@ -6,9 +6,6 @@ const AnalyzeDetails = (props:{stock:string}) => {
     const [IrregularStockDetails,setIrregularStockDetails] = useState([])
     console.log(props.stock);
 
-    const stockDate = new Date();
-    const dateOnly = stockDate.toLocaleDateString();
-
     const getStockDetails = (stock:string) => {
         if (stock !== "") {
             axios.get(config.analyzeUrl + "?ticker=" +stock).then((response) => {
@@ -49,7 +46,7 @@ const AnalyzeDetails = (props:{stock:string}) => {
                         <td>{stockDate.avg_volume}</td>
                         <td>{stockDate.rating}</td>
                         <td>{stockDate.dev_volume}</td>
-                        <td>{dateOnly}</td>
+                        <td>{stockDate.time}</td>
                         <td>{stockDate.open_price}</td>
                         <td>{stockDate.close_price}</td>
                     </tr>
