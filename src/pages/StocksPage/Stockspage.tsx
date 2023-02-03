@@ -5,6 +5,7 @@ import config from '../../Utils/Config';
 import StockDetails from './components/stockDetails/StockDetails';
 import "./StocksPage.css";
 
+
 const StocksPage = () => {
     const [stocksList,setStocksList] = useState([])
     const [currentStock,setCurrentStock] = useState("")
@@ -25,8 +26,6 @@ const StocksPage = () => {
     useEffect(() => {
         getStocks()
     },[])
-
-
 
 	return (
 	<div>

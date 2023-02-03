@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import config from '../../Utils/Config'
 
+
 const AddStockPage = () => {
     const [stockTicker, setStockTicker] = useState("")
     const [result, setResult] = useState("Search For Stock")
@@ -15,8 +16,8 @@ const AddStockPage = () => {
     }
     return (
         <div>
-            <h1>Add Stock Page</h1>
-            <input onChange={(e) => { setStockTicker(e.target.value) }} type="text" placeholder="Add new stock" />
+            <h2>Add Stock Page</h2>
+            <input onChange={(e) => {setStockTicker(e.target.value)}} type="text" placeholder="Add new stock" />
             <button onClick={addNewStock}>Submit</button>
             <h3>{result}</h3>
         </div>
