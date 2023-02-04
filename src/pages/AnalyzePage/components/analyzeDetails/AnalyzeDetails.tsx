@@ -31,10 +31,10 @@ const AnalyzeDetails = (props:{stock:string}) => {
             <table>
                 <tr>
                     <th>Ticker Name</th>
-                    <th>Volume</th>
-                    <th>Average</th>
+                    <th>Volume in M</th>
+                    <th>Average in M</th>
                     <th>Rating</th>
-                    <th>Deviation</th>
+                    <th>Deviation in M</th>
                     <th>Time</th>
                     <th>Open Price</th>
                     <th>Close Price</th>
@@ -42,10 +42,10 @@ const AnalyzeDetails = (props:{stock:string}) => {
                 {IrregularStockDetails.map((stockDate:any) => {
                     return <tr className={stockDate.open_price > stockDate.close_price ? "loss-marker" : "profit-marker"}>
                         <td>{stockDate.ticker}</td>
-                        <td>{stockDate.volume}</td>
-                        <td>{stockDate.avg_volume}</td>
+                        <td>{(stockDate.volume / 1000000).toFixed(3)}</td>
+                        <td>{(stockDate.avg_volume / 1000000).toFixed(3)}</td>
                         <td>{stockDate.rating}</td>
-                        <td>{stockDate.dev_volume}</td>
+                        <td>{(stockDate.dev_volume / 1000000).toFixed(3)}</td>
                         <td>{stockDate.time}</td>
                         <td>{stockDate.open_price}</td>
                         <td>{stockDate.close_price}</td>

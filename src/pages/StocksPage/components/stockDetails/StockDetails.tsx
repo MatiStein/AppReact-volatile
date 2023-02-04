@@ -52,7 +52,7 @@ const StockDetails = (props: { stock: string }) => {
                     <th>Ticker Name</th>
                     <th>Open Price</th>
                     <th>Close Price</th>
-                    <th>Volume</th>
+                    <th>Volume in M</th>
                     <th>Time</th>
                 </tr>
                 {stockDetails.map((stockDate: any) => {
@@ -60,7 +60,7 @@ const StockDetails = (props: { stock: string }) => {
                         <td>{stockDate.ticker}</td>
                         <td>{stockDate.open_price}</td>
                         <td>{stockDate.close_price}</td>
-                        <td>{stockDate.volume}</td>
+                        <td>{(stockDate.volume / 1000000).toFixed(3)}</td>
                         <td>{stockDate.time}</td>
                     </tr>
                 })}

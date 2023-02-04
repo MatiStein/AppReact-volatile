@@ -42,7 +42,7 @@ const SelfAnalyzeDetails = (props: { stock: string }) => {
         console.log(response)
       })
   }
-  
+
   return (
     <div>
       <h2>{props.stock}</h2>
@@ -53,8 +53,8 @@ const SelfAnalyzeDetails = (props: { stock: string }) => {
       {selfAnalyzedStocks?.stockDays?.length > 0 && <table>
         <tr>
           <th>Ticker Name</th>
-          <th>Volume</th>
-          <th>Average</th>
+          <th>Volume in M</th>
+          <th>Average in M</th>
           <th>Rating</th>
           <th>Time</th>
           <th>Open Price</th>
@@ -63,8 +63,8 @@ const SelfAnalyzeDetails = (props: { stock: string }) => {
         {selfAnalyzedStocks?.stockDays?.map((stockDate: any) => {
           return <tr className={stockDate.open_price > stockDate.close_price ? "loss-marker" : "profit-marker"}>
             <td>{stockDate.ticker}</td>
-            <td>{stockDate.volume}</td>
-            <td>{selfAnalyzedStocks.averageVolume}</td>
+            <td>{(stockDate.volume / 1000000).toFixed(3)}</td>
+            <td>{(selfAnalyzedStocks.averageVolume / 1000000).toFixed(3)}</td>
             <td>{(stockDate.volume / selfAnalyzedStocks.averageVolume).toFixed(1)}</td>
             <td>{stockDate.time}</td>
             <td>{stockDate.open_price}</td>
