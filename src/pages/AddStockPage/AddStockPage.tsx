@@ -1,6 +1,8 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import config from '../../Utils/Config'
+import './AddStockPage.css'
+
 
 
 const AddStockPage = () => {
@@ -15,7 +17,7 @@ const AddStockPage = () => {
         }).catch((error) => setResult(error.response.data))
     }
     return (
-        <div>
+        <div className='AddStockPage'>
             <h2>Add Stock Page</h2>
             <input onChange={(e) => {setStockTicker(e.target.value)}} type="text" placeholder="Add new stock" />
             <button onClick={addNewStock}>Submit</button>
@@ -24,4 +26,4 @@ const AddStockPage = () => {
     )
 }
 
-export default AddStockPage
+export default AddStockPage 

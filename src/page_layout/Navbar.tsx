@@ -11,18 +11,18 @@ function Navbar() {
             <nav>
                 <ul className="header-list">
                     <NavLink to="/home">Home</NavLink>
-                    <NavLink to="/stocks">Stocks</NavLink>
-                    <NavLink to="/analyze">Analyze</NavLink>
-                    <NavLink to="/self_analyze">Self Analyze</NavLink>
+                    <NavLink to="/stocks">Data</NavLink>
+                    <NavLink to="/analyze">Analyzed</NavLink>
+                    <NavLink to="/self_analyze">Test It</NavLink>
                     <NavLink to="/search">Search</NavLink>
                     <NavLink to="/find_stock">Get Stock</NavLink>
                 </ul>
             </nav>
             <nav>
                 <ul className="header-auth">
-                    <NavLink to="/support">Support</NavLink>
                     <NavLink to="/login">Login</NavLink>
                     <NavLink to="/register">Register</NavLink>
+                    <NavLink to="/support">Support</NavLink>
                 </ul>
             </nav>
         </div>
