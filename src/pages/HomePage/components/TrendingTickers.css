@@ -8,9 +8,9 @@
 .loading > .spinner {
   width: 10rem;
   height: 10rem;
-  border: 1rem solid #ccc;
+  border: 1rem solid #b2b2b2;
   border-radius: 50%;
-  border-top-color: #333;
+  border-top-color: #000000;
   animation: spin 1s linear infinite;
 }
 

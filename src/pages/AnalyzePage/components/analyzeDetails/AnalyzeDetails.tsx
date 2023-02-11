@@ -31,10 +31,10 @@ const AnalyzeDetails = (props:{stock:string}) => {
             <table>
                 <tr>
                     <th>Ticker Name</th>
-                    <th>Volume in M</th>
-                    <th>Average in M</th>
+                    <th>Volume in_M</th>
+                    <th>Average in_M</th>
                     <th>Rating</th>
-                    <th>Deviation in M</th>
+                    <th>Deviation in_M</th>
                     <th>Time</th>
                     <th>Open Price</th>
                     <th>Close Price</th>

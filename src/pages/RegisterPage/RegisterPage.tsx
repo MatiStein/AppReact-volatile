@@ -22,7 +22,7 @@ const RegisterPage = () => {
                 password: password,
             }
         
-            await axios.post(Config.registerUrl,data,{
+            await axios.post(Config.registerUrl, data, {
                 headers: { 'Content-Type': 'application/json' },
             
         })
@@ -33,7 +33,8 @@ const RegisterPage = () => {
     
     return (
         <FormContainer>
-            <Form onSubmit={submitHandler}>
+            <Form onClick={navigate =>("/support")}> {/* This is replacing the Line that is the next!! */}
+            {/* <Form onSubmit={submitHandler}> */} 
                 <Form.Group controlId="user" className='my-3'>
                     <Form.Label>User Name</Form.Label>
                     <Form.Control
@@ -71,7 +72,7 @@ const RegisterPage = () => {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </Form.Group>
-                <Button variant="primary" type="submit">
+                <Button variant="secondary" type="submit">
                     Submit
                 </Button>
             </Form>
