@@ -19,7 +19,7 @@ const AddStockPage = () => {
     return (
         <div className='AddStockPage'>
             <h2>Add Stock Page</h2>
-            <input onChange={(e) => {setStockTicker(e.target.value)}} type="text" placeholder="Add new stock" />
+            <input onChange={(e) => {setStockTicker(e.target.value)}} type="text" placeholder="Add a Stock" />
             <button onClick={addNewStock}>Submit</button>
             <h3>{result}</h3>
         </div>

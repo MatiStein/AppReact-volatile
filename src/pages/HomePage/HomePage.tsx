@@ -1,12 +1,19 @@
 import React from 'react'
 import config from '../../Utils/Config'
-import TrendingTickers from './components/TrendingTickers'
+import TrendingBanner from './components/TrendingBanner';
+import TrendingTickers from './components/TrendingTickers';
 
-const HomePage = () => {
+
+interface Props {
+  User: string
+}
+
+const HomePage = ({User}: Props) => {
   return (
   
-    <div>HomePage
-      <TrendingTickers />
+    <div>
+      {/* <TrendingBanner CompanyName={'CompanyName'} Symbol={'Symbol'} Trading={0} LastClose={0} ChangePercent={0} /> */}
+      <TrendingTickers/>
     </div>
   );
 };
