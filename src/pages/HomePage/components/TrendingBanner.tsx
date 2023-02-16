@@ -1,5 +1,5 @@
 import React from 'react'
-import  TrandingTickers  from './TrendingTickers'
+
 
 interface Props {
     CompanyName: string;
@@ -7,25 +7,21 @@ interface Props {
     Trading: number;
     LastClose: number;
     ChangePercent: number;
-    
-}
+    }
 
-    const TrendingBanner: React.FC<Props> = (
-        { Symbol, CompanyName, Trading, LastClose, ChangePercent }) => {
-            
+const TrendingBanner: React.FC<Props> = (
+    { Symbol, CompanyName, Trading, LastClose, ChangePercent }) => {
         
-        
-        return (
-            <div style={styles.container}>
-                <div style={styles.symbol}>{Symbol}</div>
-                <div style={styles.name}>{CompanyName}</div>
-                <div style={styles.price}>{Trading}</div>
-                <div style={styles.price}>{LastClose}</div>
-                <div style={ChangePercent > 0 ? styles.changeUp : styles.changeDown}>
-        {ChangePercent} ({ChangePercent})</div>
-                    
-                </div>
-            
+    return (
+    <div style={styles.container}>
+        <div style={styles.symbol}>{Symbol}</div>
+        <div style={styles.name}>{CompanyName}</div>
+        <div style={styles.price}>{Trading}</div>
+        <div style={styles.price}>{LastClose}</div>
+        <div style={ChangePercent > 0 ? styles.changeUp : styles.changeDown}>
+            {ChangePercent} ({ChangePercent})</div>
+    </div>
+    
 )};
 
     const styles = {

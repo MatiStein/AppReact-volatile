@@ -46,9 +46,11 @@ const SelfAnalyzeDetails = (props: { stock: string }) => {
   return (
     <div>
       <h2>{props.stock}</h2>
+      <h6>Function to find dates which has Volume above the Average by Multiplier. Rating = Vol/AvgVol</h6>
       {props.stock && <div><DatesFeature fromDateSetter={fromDateHandler} addMultiplierFilter={true}
         toDateSetter={toDateHandler} multiplierSetter={multiplierHandler} />
         <button onClick={() => { sendSelfAnalyzeData() }}>Submit</button></div>}
+        
         
       {selfAnalyzedStocks?.stockDays?.length > 0 && <table>
         <tr>

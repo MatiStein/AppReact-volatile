@@ -21,11 +21,13 @@ const AddStockPage = () => {
             <Card.Body>
                 <Card.Title>Get A New Stock</Card.Title>
                 <Card.Text>
-                    Put the 'Ticker in', in Capital Letters.
+                    Put the 'Ticker', in Uppercase Characters. <br></br>
+                    It takes time to Download, 
+                    and even more to process... Bear with me.
                 </Card.Text>
                 <input onChange={(e) => { setStockTicker(e.target.value) }} 
-                type="text" placeholder="Add a Stock" />
-                <Button onClick={addNewStock} variant="primary">Get Data</Button>
+                type="text" placeholder="Add a 'TICKER'" />
+                <Button onClick={addNewStock} variant="secondary">Get Data</Button>
                 <h5>{result}</h5>
             </Card.Body>
         </Card>

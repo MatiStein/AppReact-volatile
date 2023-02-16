@@ -28,6 +28,7 @@ const AnalyzeDetails = (props:{stock:string}) => {
     
         <div>
             <h2>{props.stock}</h2>
+            <h6>Function using methods 'Moving Average' & 'Standard deviation' of 30 trade days. Rating(n) is Vol = (n-1) * AvgVol</h6>
             <table>
                 <tr>
                     <th>Ticker Name</th>
