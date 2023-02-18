@@ -1,17 +1,19 @@
 import axios from 'axios'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import config from '../../Utils/Config'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { UserContext } from '../../UserContext';
 
 
 const AddStockPage = () => {
+    const [user,setUser] = useContext(UserContext)
     const [stockTicker, setStockTicker] = useState("")
     const [result, setResult] = useState("Search For Stock")
 
     const addNewStock = () => {
         setResult("Loading.... getting new stock from server...")
-        axios.get(config.get_data_url + "?ticker=" + stockTicker).then((response) => {
+        axios.get(config.get_data_url + "?ticker=" + stockTicker,{headers:{"Authorization":user}}).then((response) => {
             console.log(response.data)
             setResult("Success," + response.data)
         }).catch((error) => setResult(error.response.status))

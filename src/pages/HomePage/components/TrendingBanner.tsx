@@ -10,12 +10,12 @@ interface Props {
     }
 
 const TrendingBanner: React.FC<Props> = (
-    { Symbol, CompanyName, Trading, LastClose, ChangePercent }) => {
+    { CompanyName, Symbol, Trading, LastClose, ChangePercent }) => {
         
     return (
     <div style={styles.container}>
-        <div style={styles.symbol}>{Symbol}</div>
         <div style={styles.name}>{CompanyName}</div>
+        <div style={styles.symbol}>{Symbol}</div>
         <div style={styles.price}>{Trading}</div>
         <div style={styles.price}>{LastClose}</div>
         <div style={ChangePercent > 0 ? styles.changeUp : styles.changeDown}>

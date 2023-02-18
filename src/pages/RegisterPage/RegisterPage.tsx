@@ -67,7 +67,7 @@ const RegisterPage = () => {
                     <Form.Label>Password</Form.Label>
                     <Form.Control
                         type="password"
-                        placeholder="To get a Password"
+                        placeholder="To get a Password > matistein@gmail.com"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />

@@ -1,12 +1,14 @@
-import { Pagination } from 'react-bootstrap'
+import { Pagination, Table } from 'react-bootstrap'
 
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import DatesFeature from "../../../../page_layout/DatesFeature";
 import config from "../../../../Utils/Config";
 import "./StockDetails.css";
+import { UserContext } from '../../../../UserContext';
 
 const StockDetails = (props: { stock: string }) => {
+    const [user,setUser] = useContext(UserContext)
     const [stockDetails, setStockDetails] = useState([])
     const date = new Date().toISOString().split("T")[0];
     const [fromDate, setFromDate] = useState("2020-01-01")
@@ -25,7 +27,8 @@ const StockDetails = (props: { stock: string }) => {
 
     const getStockDetails = (stock: string) => {
         if (stock !== "") {
-            axios.get(config.stocksUrl + "?ticker=" + stock + "&from_date=" + fromDate +"&to_date="+toDate).then((response) => {
+            axios.get(config.stocksUrl + "?ticker=" + stock + "&from_date=" + fromDate +"&to_date="+toDate,
+            {headers:{"Authorization":user}}).then((response) => {
                 console.log(response.data);
                 setStockDetails(response.data);
 
@@ -49,7 +52,8 @@ const StockDetails = (props: { stock: string }) => {
             <h2>{props.stock}</h2>
             <DatesFeature multiplierSetter={null} fromDateSetter={fromDateHandler} toDateSetter={toDateHandler} addMultiplierFilter={false} />
             
-            <table>
+            <Table bordered size="sm">
+            <thead>
                 <tr>
                     <th>Ticker Name</th>
                     <th>Open Price</th>
@@ -57,17 +61,20 @@ const StockDetails = (props: { stock: string }) => {
                     <th>Volume in M</th>
                     <th>Time</th>
                 </tr>
-                {stockDetails.map((stockDate: any) => {
-                    return <tr className={stockDate.open_price > stockDate.close_price ? "loss-marker" : "profit-marker"}>
+                </thead>
+                <tbody>
+                {stockDetails.map((stockDate: any, index: number) => {
+                    return <tr key={index} className={stockDate.open_price > stockDate.close_price ? "loss-marker" : "profit-marker"}>
                         <td>{stockDate.ticker}</td>
-                        <td>{stockDate.open_price}</td>
-                        <td>{stockDate.close_price}</td>
+                        <td>{Number(stockDate.open_price).toFixed(2)}</td>
+                        <td>{Number(stockDate.close_price).toFixed(2)}</td>
                         <td>{(stockDate.volume / 1000000).toFixed(3)}</td>
-                        <td>{stockDate.time}</td>
+                        <td>{stockDate.time.split("T")[0]}</td>
                     </tr>
                 })}
-
-            </table>
+            </tbody>
+            </Table>
+            
 
         </div>
 

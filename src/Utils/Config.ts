@@ -1,7 +1,7 @@
 class Config {
     public supportEmail = 'matistein@gmail.com';
     public baseUrl = 'http://127.0.0.1:8000/api/v1/';
-    public adminUrl = 'http://127.0.0.1:8000/admin/'
+    public adminUrl = 'http://127.0.0.1:8000/admin/';
     public stocksUrl = this.baseUrl + 'stocks/';
     public analyzeUrl = this.baseUrl + 'analyzed/';
     public analyzeQueryUrl = this.baseUrl + 'analyze_query/';

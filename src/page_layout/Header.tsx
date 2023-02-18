@@ -28,11 +28,12 @@ const Header = () => {
         <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="basic">
             <Nav.Link href="/home">Home</Nav.Link>
+            {user &&<>
             <Nav.Link href="/stocks">Data</Nav.Link>
             <Nav.Link href="/analyze">Analyzed</Nav.Link>
             <Nav.Link href="/self_analyze">Test It</Nav.Link>
             <Nav.Link href="/search">Search</Nav.Link>
-            <Nav.Link href="/find_stock">Get Stock</Nav.Link>
+            <Nav.Link href="/find_stock">Get Stock</Nav.Link></>}
             </Nav>
             {user ? (
                 <Nav className="ms-auto">

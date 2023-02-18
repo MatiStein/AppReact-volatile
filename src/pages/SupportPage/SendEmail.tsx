@@ -6,10 +6,10 @@ export default function Support() {
     function SendEmail(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         const form = e.target as HTMLFormElement;
-        const Name = form.elements.namedItem("Name") as HTMLInputElement;
+        const Name = form.elements.namedItem("name") as HTMLInputElement;
         const email = form.elements.namedItem("email") as HTMLInputElement;
-        const Subject = form.elements.namedItem("Subject") as HTMLInputElement;
-        const Message = form.elements.namedItem("Message here:") as HTMLTextAreaElement;
+        const Subject = form.elements.namedItem("subject") as HTMLInputElement;
+        const Message = form.elements.namedItem("message") as HTMLTextAreaElement;
     
         emailjs.sendForm('service_rynqrmq', 'template_ejceal7', form, '9ANcvcju7Lm765Kyg')
         .then((response) => {

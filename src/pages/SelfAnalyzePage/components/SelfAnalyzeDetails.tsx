@@ -1,10 +1,13 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react';
 import config from '../../../Utils/Config';
 import DatesFeature from '../../../page_layout/DatesFeature';
+import {Button, Table} from 'react-bootstrap';
+import { UserContext } from '../../../UserContext';
 
 
 const SelfAnalyzeDetails = (props: { stock: string }) => {
+  const [user,setUser] = useContext(UserContext)
   const date = new Date().toISOString().split("T")[0];
   const [fromDate, setFromDate] = useState("")
   const [toDate, setToDate] = useState(date)
@@ -36,7 +39,7 @@ const SelfAnalyzeDetails = (props: { stock: string }) => {
       return alert("Multiplier must be greater than 1")
     }
 
-    axios.get(config.analyzeQueryUrl + `?ticker=${props.stock}&from_date=${fromDate}&to_date=${toDate}&multi=${multiplier}`)
+    axios.get(config.analyzeQueryUrl + `?ticker=${props.stock}&from_date=${fromDate}&to_date=${toDate}&multi=${multiplier}`,{headers:{"Authorization":user}})
       .then((response) => {
         setSelfAnalyzedStocks(response?.data)
         console.log(response)
@@ -49,10 +52,10 @@ const SelfAnalyzeDetails = (props: { stock: string }) => {
       <h6>Function to find dates which has Volume above the Average by Multiplier. Rating = Vol/AvgVol</h6>
       {props.stock && <div><DatesFeature fromDateSetter={fromDateHandler} addMultiplierFilter={true}
         toDateSetter={toDateHandler} multiplierSetter={multiplierHandler} />
-        <button onClick={() => { sendSelfAnalyzeData() }}>Submit</button></div>}
+        <Button variant="secondary" onClick={() => { sendSelfAnalyzeData() }}>Submit</Button></div>}
         
         
-      {selfAnalyzedStocks?.stockDays?.length > 0 && <table>
+      {selfAnalyzedStocks?.stockDays?.length > 0 && <Table bordered size="sm">;
         <tr>
           <th>Ticker Name</th>
           <th>Volume in M</th>
@@ -68,13 +71,13 @@ const SelfAnalyzeDetails = (props: { stock: string }) => {
             <td>{(stockDate.volume / 1000000).toFixed(3)}</td>
             <td>{(selfAnalyzedStocks.averageVolume / 1000000).toFixed(3)}</td>
             <td>{(stockDate.volume / selfAnalyzedStocks.averageVolume).toFixed(1)}</td>
-            <td>{stockDate.time}</td>
-            <td>{stockDate.open_price}</td>
-            <td>{stockDate.close_price}</td>
+            <td>{stockDate.time.split("T")[0]}</td>
+            <td>{Number(stockDate.open_price).toFixed(2)}</td>
+            <td>{Number(stockDate.close_price).toFixed(2)}</td>
           </tr>
         })}
 
-      </table>}
+      </Table>}
 
 
     </div>

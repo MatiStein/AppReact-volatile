@@ -20,9 +20,11 @@ const LoginPage = () => {
                 password:password,
             }
             await axios.post(Config.loginUrl ,data).then((response) => {
+                console.log(response.data.access)
                 setUser(response.data.access)
-                localStorage.setItem("Authorization",`token ${response.data.access}`)} )
-            .then(response => console.log(response))
+                console.log(user)
+                localStorage.setItem('logged_in',"true")
+                localStorage.setItem("Authorization",`Berear ${response.data.access}`)} )
         navigate("/")
         } catch (error) {
             console.error(error)

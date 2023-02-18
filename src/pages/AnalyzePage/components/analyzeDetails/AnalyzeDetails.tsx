@@ -1,14 +1,17 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { Table } from 'react-bootstrap';
+import { UserContext } from '../../../../UserContext';
 import config from '../../../../Utils/Config';
 
 const AnalyzeDetails = (props:{stock:string}) => {
+    const [user,setUser] = useContext(UserContext)
     const [IrregularStockDetails,setIrregularStockDetails] = useState([])
     console.log(props.stock);
 
     const getStockDetails = (stock:string) => {
         if (stock !== "") {
-            axios.get(config.analyzeUrl + "?ticker=" +stock).then((response) => {
+            axios.get(config.analyzeUrl + "?ticker=" +stock,{headers:{"Authorization":user}}).then((response) => {
                 console.log(response.data);
                 setIrregularStockDetails(response.data);
 
@@ -28,8 +31,9 @@ const AnalyzeDetails = (props:{stock:string}) => {
     
         <div>
             <h2>{props.stock}</h2>
-            <h6>Function using methods 'Moving Average' & 'Standard deviation' of 30 trade days. Rating(n) is Vol = (n-1) * AvgVol</h6>
-            <table>
+            <h6>Function using methods 'Moving Average' & 'Standard deviation' 
+                of 30 trade days. Rating(n) is Vol = (n-1) * AvgVol</h6>
+                <Table bordered size="sm">
                 <tr>
                     <th>Ticker Name</th>
                     <th>Volume in_M</th>
@@ -41,19 +45,20 @@ const AnalyzeDetails = (props:{stock:string}) => {
                     <th>Close Price</th>
                 </tr>
                 {IrregularStockDetails.map((stockDate:any) => {
-                    return <tr className={stockDate.open_price > stockDate.close_price ? "loss-marker" : "profit-marker"}>
+                    return <tr className={stockDate.open_price > stockDate.close_price ? 
+                    "loss-marker" : "profit-marker"}>
                         <td>{stockDate.ticker}</td>
                         <td>{(stockDate.volume / 1000000).toFixed(3)}</td>
                         <td>{(stockDate.avg_volume / 1000000).toFixed(3)}</td>
                         <td>{stockDate.rating}</td>
                         <td>{(stockDate.dev_volume / 1000000).toFixed(3)}</td>
-                        <td>{stockDate.time}</td>
-                        <td>{stockDate.open_price}</td>
-                        <td>{stockDate.close_price}</td>
+                        <td>{stockDate.time.split("T")[0]}</td>
+                        <td>{Number(stockDate.open_price).toFixed(2)}</td>
+                        <td>{Number(stockDate.close_price).toFixed(2)}</td>
                     </tr>
                 })}
 
-            </table>
+            </Table>
             
         </div>
 
