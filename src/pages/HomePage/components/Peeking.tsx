@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react'
 import config from '../../../Utils/Config'
 
 
-
 const Peeking = (props: { stock: string }) => {
     const [TopRating, setTopRating] = useState<any[]>([]);
     const [LatestRating, setLatestRating] = useState<any[]>([]);

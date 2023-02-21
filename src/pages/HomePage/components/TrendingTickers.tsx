@@ -35,7 +35,7 @@ const TrendingTickers: React.FC = () => {
             <div className="spinner"></div>
             </div>
             ) : (
-               <div>
+            <div>
         <Table>
             <thead>
                 <tr>
@@ -62,8 +62,6 @@ const TrendingTickers: React.FC = () => {
             </tbody>
             </Table>
                 </div>
-
-                
                 )}
         </div>
     );

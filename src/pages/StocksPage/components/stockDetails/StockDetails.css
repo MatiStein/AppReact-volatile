@@ -1,18 +1,10 @@
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-  
+.chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: black;
 }
 
-td,
-th {
-  border: 1px solid #dcdada;
-  text-align: center;
-  padding: 8px;
+.chart {
+  margin-top: 100px;
 }
-
-tr:nth-child(even) {
-  width: 180px;
-}
-

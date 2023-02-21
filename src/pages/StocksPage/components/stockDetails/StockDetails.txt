@@ -1,0 +1,116 @@
+import { Pagination, Table } from 'react-bootstrap'
+import axios from "axios";
+import { useContext, useEffect, useState } from "react";
+import DatesFeature from "../../../../page_layout/DatesFeature";
+import config from "../../../../Utils/Config";
+import "./StockDetails.css";
+import { UserContext } from '../../../../UserContext';
+
+
+const StockDetails = (props: { stock: string }) => {
+    const [user,setUser] = useContext(UserContext)
+    const [stockDetails, setStockDetails] = useState([])
+    const date = new Date().toISOString().split("T")[0];
+    const [fromDate, setFromDate] = useState("2020-01-01")
+    const [toDate, setToDate] = useState(date)
+    const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage, setItemsPerPage] = useState(25);
+
+    const fromDateHandler = (date: string) => {
+        setFromDate(date)
+        console.log(date)
+    }
+
+    const toDateHandler = (date: string) => {
+        setToDate(date)
+        console.log(date)
+    }
+    console.log(props.stock);
+
+    const getStockDetails = (stock: string) => {
+        if (stock !== "") {
+            axios.get(config.stocksUrl + "?ticker=" + stock + "&from_date=" + fromDate +"&to_date="+toDate,
+            {headers:{"Authorization":user}}).then((response) => {
+                console.log(response.data);
+                setStockDetails(response.data);
+
+            })
+        }
+    }
+
+    useEffect(() => {
+        getStockDetails(props.stock)
+    }, [props.stock,fromDate,toDate,user])
+
+    if (getStockDetails.length === 0) {
+        return <div>Please choose a Stock for details</div>;
+    }
+    if (stockDetails.length === 0) {
+        return <div>Please choose a Stock for details</div>
+    }
+    
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = stockDetails.slice(indexOfFirstItem, indexOfLastItem);
+    const totalPages = Math.ceil(stockDetails.length / itemsPerPage);
+    const pageNumbers = [];
+    for (let i = 1; i <= totalPages; i++) {
+        pageNumbers.push(i);
+    }
+
+    const handleClick = (event: any) => {
+        setCurrentPage(Number(event.target.id));
+    }
+    
+    const renderPageNumbers = pageNumbers.map(number => (
+        <Pagination.Item
+            key={number.toString()}
+            id={number.toString()}
+            active={number === currentPage}
+            onClick={handleClick}
+            >
+            {number}
+        </Pagination.Item>
+    ));
+    return (
+        <div>
+            <h3>{props.stock}</h3>
+            <DatesFeature multiplierSetter={null} fromDateSetter={fromDateHandler} toDateSetter={toDateHandler} addMultiplierFilter={false} />
+            
+            <Table bordered size="sm">
+            <thead>
+                <tr>
+                    <th>Ticker Name</th>
+                    <th>Open Price</th>
+                    <th>Close Price</th>
+                    <th>Volume in M</th>
+                    <th>Time</th>
+                </tr>
+                </thead>
+                <tbody>
+                {currentItems.map((stockDate: any, index: number) => {
+                    return <tr key={index} className={stockDate.open_price > stockDate.close_price ? "loss-marker" : "profit-marker"}>
+                        <td>{stockDate.ticker}</td>
+                        <td>{Number(stockDate.open_price).toFixed(2)}</td>
+                        <td>{Number(stockDate.close_price).toFixed(2)}</td>
+                        <td>{(stockDate.volume / 1000000).toFixed(3)}</td>
+                        <td>{stockDate.time.split("T")[0]}</td>
+                    </tr>
+                })}
+            </tbody>
+            <Pagination>
+        <Pagination.First onClick={() => setCurrentPage(1)} />
+        <Pagination.Prev onClick={() => currentPage > 1 && setCurrentPage(currentPage - 1)} />
+        {renderPageNumbers}
+        <Pagination.Next onClick={() => currentPage < totalPages && setCurrentPage(currentPage + 1)} />
+        <Pagination.Last onClick={() => setCurrentPage(totalPages)} />
+        </Pagination>
+            </Table>
+            
+
+        </div>
+
+    )
+}
+
+export default StockDetails

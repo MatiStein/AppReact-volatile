@@ -76,12 +76,8 @@ const SelfAnalyzeDetails = (props: { stock: string }) => {
             <td>{Number(stockDate.close_price).toFixed(2)}</td>
           </tr>
         })}
-
       </Table>}
-
-
     </div>
   )
 }
-
 export default SelfAnalyzeDetails
