@@ -63,8 +63,8 @@ const StockDetails = (props: { stock: string }) => {
         <h3>{props.stock}</h3>
             <DatesFeature multiplierSetter={null} fromDateSetter={fromDateHandler} toDateSetter={toDateHandler} addMultiplierFilter={false} />
         <ComposedChart
-            width={1200}
-            height={720}
+            width={1000}
+            height={550}
             data={data}
             margin={{
                 top: 40,
