@@ -24,7 +24,7 @@ const LoginPage = () => {
                 setUser(response.data.access)
                 console.log(user)
                 localStorage.setItem('logged_in',"true")
-                localStorage.setItem("Authorization",`Berear ${response.data.access}`)} )
+                localStorage.setItem("Authorization",`Bearer ${response.data.access}`)} )
         navigate("/")
         } catch (error) {
             console.error(error)

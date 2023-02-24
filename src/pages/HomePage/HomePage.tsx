@@ -14,7 +14,7 @@ const HomePage = ({User}: Props) => {
     <div>
       <Peeking stock={''}/>
       <hr/>
-      <h5>Most Trending Stocks Today</h5>
+      <h5 className='trending-ticker-title'>Most Trending Stocks Today</h5>
       <TrendingTickers/>
     </div>
   );

@@ -24,23 +24,14 @@
 /* Banner */
 
 .ticker-container {
-  flex-direction: row-reverse;
-  overflow: hidden;
-  white-space: fixed;
-  position: fixed;
-  /* top: 200px; */
-  right: 0;
-  left: 0;
-  margin-right: auto;
-  margin-left: auto;
-  width: 800%;
   background-color: rgb(202, 200, 200);
+  margin:auto;
 }
 
 .ticker {
   display: inline-block;
   margin-right: 110px;
-  font-size: 30px;
+  font-size: 26px;
   color: #000000;
   animation: ticker 20s linear infinite;
   transition-duration: 10s;
@@ -54,4 +45,8 @@
   100% {
     transform: translateX(-100%);
   }
+}
+
+.trending-ticker-title {
+  margin-bottom:50px
 }

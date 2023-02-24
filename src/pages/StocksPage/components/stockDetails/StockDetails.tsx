@@ -23,6 +23,7 @@ const StockDetails = (props: { stock: string }) => {
     const [fromDate, setFromDate] = useState("2020-01-01")
     const [toDate, setToDate] = useState(date)
     
+    
     const fromDateHandler = (date: string) => {
         setFromDate(date)
     }
@@ -30,11 +31,11 @@ const StockDetails = (props: { stock: string }) => {
         setToDate(date)
     }
     console.log(props.stock);
+    console.log({headers: { "Authorization": user }})
 
     const getStockDetails = (stock: string) => {
         if (stock !== "") {
-            axios.get(config.stocksUrl + "?ticker=" + stock + "&from_date=" + fromDate + "&to_date=" + toDate,
-                { headers: { "Authorization": user } }).then((response) => {
+            axios.get(config.stocksUrl + "?ticker=" + stock + "&from_date=" + fromDate + "&to_date=" + toDate, {headers: { "Authorization": user }}).then((response) => {
                     console.log(response.data);
                     setStockDetails(response.data);
                 })}}
