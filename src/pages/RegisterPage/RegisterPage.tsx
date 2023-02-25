@@ -17,24 +17,25 @@ const RegisterPage = () => {
         try {
             const data = {
                 username: user,
-                first_name: firstName,  
+                first_name: firstName,
                 last_name: lastName,
                 password: password,
             }
-        
+
             await axios.post(Config.registerUrl, data, {
                 headers: { 'Content-Type': 'application/json' },
-            
-        })
-        navigate("/login")
+
+            })
+            navigate("/login")
         } catch (error) {
             console.error(error)
-        }}
-    
+        }
+    }
+
     return (
         <FormContainer>
-            <Form onClick={navigate =>("/support")}> {/* This is replacing the Line that is the next!! */}
-            {/* <Form onSubmit={submitHandler}> */} 
+            <Form onClick={navigate => ("/support")}> {/* This is replacing the Line that is the next!! */}
+                {/* <Form onSubmit={submitHandler}> */}
                 <Form.Group controlId="user" className='my-3'>
                     <Form.Label>User Name</Form.Label>
                     <Form.Control
@@ -77,6 +78,7 @@ const RegisterPage = () => {
                 </Button>
             </Form>
         </FormContainer>
-    )}
+    )
+}
 
 export default RegisterPage

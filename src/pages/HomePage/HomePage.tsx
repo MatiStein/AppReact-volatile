@@ -8,14 +8,14 @@ interface Props {
   User: string
 }
 
-const HomePage = ({User}: Props) => {
+const HomePage = ({ User }: Props) => {
   return (
-  
+
     <div>
-      <Peeking stock={''}/>
-      <hr/>
+      <Peeking stock={''} />
+      <hr />
       <h5 className='trending-ticker-title'>Most Trending Stocks Today</h5>
-      <TrendingTickers/>
+      <TrendingTickers />
     </div>
   );
 };

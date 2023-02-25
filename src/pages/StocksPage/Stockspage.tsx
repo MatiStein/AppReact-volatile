@@ -8,19 +8,19 @@ import { UserContext } from '../../UserContext';
 
 
 const StocksPage = () => {
-    const [stocksList,setStocksList] = useState([])
-    const [currentStock,setCurrentStock] = useState("")
-    const [user,setUser] = useContext(UserContext)
-    console.log("User",user)
+    const [stocksList, setStocksList] = useState([])
+    const [currentStock, setCurrentStock] = useState("")
+    const [user, setUser] = useContext(UserContext)
+    console.log("User", user)
 
     const getStocks = () => {
         const stocksListUrl = config.stock_list_url
-        axios.get(stocksListUrl,{headers:{"Authorization":user}}).then((response) => {
+        axios.get(stocksListUrl, { headers: { "Authorization": user } }).then((response) => {
             setStocksList(response?.data?.Stocks)
         })
     }
 
-    const getCurrentStockFromStockList = (stockName:string) => {
+    const getCurrentStockFromStockList = (stockName: string) => {
         console.log(stockName)
         setCurrentStock(stockName)
 
@@ -28,16 +28,15 @@ const StocksPage = () => {
 
     useEffect(() => {
         getStocks()
-    },[])
+    }, [])
 
-	return (
-	<div>
-		<div className='stocks-page-container'>
-			<StocksList stockChangeHandler={getCurrentStockFromStockList} stocks={stocksList} />
-			<StockDetails stock={currentStock}/>
-		</div>
-	</div>
-
+    return (
+        <div>
+            <div className='stocks-page-container'>
+                <StocksList stockChangeHandler={getCurrentStockFromStockList} stocks={stocksList} />
+                <StockDetails stock={currentStock} />
+            </div>
+        </div>
     )
 }
 

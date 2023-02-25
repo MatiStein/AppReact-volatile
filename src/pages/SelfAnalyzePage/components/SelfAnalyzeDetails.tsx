@@ -2,19 +2,19 @@ import axios from 'axios';
 import React, { useState, useContext } from 'react';
 import config from '../../../Utils/Config';
 import DatesFeature from '../../../page_layout/DatesFeature';
-import {Button, Table} from 'react-bootstrap';
+import { Button, Table } from 'react-bootstrap';
 import { UserContext } from '../../../UserContext';
 
 
 const SelfAnalyzeDetails = (props: { stock: string }) => {
-  const [user,setUser] = useContext(UserContext)
+  const [user, setUser] = useContext(UserContext)
   const date = new Date().toISOString().split("T")[0];
   const [fromDate, setFromDate] = useState("")
   const [toDate, setToDate] = useState(date)
   const [multiplier, setMultiplier] = useState(2.3263)
   const [selfAnalyzedStocks, setSelfAnalyzedStocks] = useState<any>()
-  
-    const fromDateHandler = (date: string) => {
+
+  const fromDateHandler = (date: string) => {
     setFromDate(date)
     console.log(date)
   }
@@ -39,7 +39,7 @@ const SelfAnalyzeDetails = (props: { stock: string }) => {
       return alert("Multiplier must be greater than 1")
     }
 
-    axios.get(config.analyzeQueryUrl + `?ticker=${props.stock}&from_date=${fromDate}&to_date=${toDate}&multi=${multiplier}`,{headers:{"Authorization":user}})
+    axios.get(config.analyzeQueryUrl + `?ticker=${props.stock}&from_date=${fromDate}&to_date=${toDate}&multi=${multiplier}`, { headers: { "Authorization": user } })
       .then((response) => {
         setSelfAnalyzedStocks(response?.data)
         console.log(response)
@@ -48,11 +48,11 @@ const SelfAnalyzeDetails = (props: { stock: string }) => {
 
   return (
     <div>
-      <h2>{props.stock}</h2>
+      <h3>{props.stock}</h3>
       <h6>Function to find dates which has Volume above the Average by Multiplier. Rating = Vol/AvgVol</h6>
       {props.stock && <div><DatesFeature fromDateSetter={fromDateHandler} addMultiplierFilter={true}
         toDateSetter={toDateHandler} multiplierSetter={multiplierHandler} />
-        <Button variant="secondary" onClick={() => { sendSelfAnalyzeData() }}>Submit</Button></div>}  
+        <Button variant="secondary" onClick={() => { sendSelfAnalyzeData() }}>Submit</Button></div>}
       {selfAnalyzedStocks?.stockDays?.length > 0 && <Table bordered size="sm">;
         <tr>
           <th>Ticker Name</th>

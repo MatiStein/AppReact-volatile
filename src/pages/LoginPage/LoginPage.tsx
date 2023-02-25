@@ -8,7 +8,7 @@ import { UserContext } from '../../UserContext'
 
 
 const LoginPage = () => {
-    const [user,setUser] = useContext(UserContext)
+    const [user, setUser] = useContext(UserContext)
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const navigate = useNavigate()
@@ -16,19 +16,21 @@ const LoginPage = () => {
         e.preventDefault()
         try {
             const data = {
-                username:username,
-                password:password,
+                username: username,
+                password: password,
             }
-            await axios.post(Config.loginUrl ,data).then((response) => {
+            await axios.post(Config.loginUrl, data).then((response) => {
                 console.log(response.data.access)
                 setUser(response.data.access)
                 console.log(user)
-                localStorage.setItem('logged_in',"true")
-                localStorage.setItem("Authorization",`Bearer ${response.data.access}`)} )
-        navigate("/")
+                localStorage.setItem('logged_in', "true")
+                localStorage.setItem("Authorization", `Bearer ${response.data.access}`)
+            })
+            navigate("/")
         } catch (error) {
             console.error(error)
-        }}
+        }
+    }
 
     return (
         <FormContainer>

@@ -71,6 +71,6 @@ const TrendingTickers: React.FC = () => {
                     </Slider>
                 </div>)}
         </div>);
-    }
+}
 
-    export default TrendingTickers
+export default TrendingTickers

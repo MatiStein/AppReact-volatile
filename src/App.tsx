@@ -14,46 +14,46 @@ import StocksPage from './pages/StocksPage/StocksPage';
 import axios from 'axios';
 import Config from './Utils/Config';
 import SendEmail from './pages/SupportPage/SendEmail';
-import {UserContext} from "./UserContext";
+import { UserContext } from "./UserContext";
 import ProtectedRoute from './page_layout/ProtectedRoute';
 
 function App() {
   const [user, setUser] = useState<any>("")
   useEffect(() => {
-      setUser(localStorage.getItem("Authorization"))
-      localStorage.setItem("Test","Test")
-    }, [user]);
+    setUser(localStorage.getItem("Authorization"))
+    localStorage.setItem("Test", "Test")
+  }, [user]);
 
-    console.log(user);
+  console.log(user);
 
 
   return (
-    <UserContext.Provider value={[user,setUser]}>
-    <div>
-      <main>
-      <Container>
-      <Router>
-      <Header />
+    <UserContext.Provider value={[user, setUser]}>
+      <div>
+        <main>
+          <Container>
+            <Router>
+              <Header />
 
-        <Routes>
-        <Route path='/home' element={<HomePage User={'user'} />} />
-        <Route path='/stocks' element={
-        <ProtectedRoute>
-          <StocksPage/>
-        </ProtectedRoute>} />
-        <Route path='/analyze' element={<ProtectedRoute><AnalyzePage/></ProtectedRoute>} />
-        <Route path='/self_analyze' element={<ProtectedRoute><SelfAnalyzePage/></ProtectedRoute>} />
-        <Route path='/search' element={<ProtectedRoute><SearchPage/></ProtectedRoute>} />
-        <Route path="/find_stock" element={<ProtectedRoute><AddStockPage/></ProtectedRoute>} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/support" element={<ProtectedRoute><SendEmail /></ProtectedRoute>} />
-        </Routes>
-        </Router>
-      </Container>
-    </main>
-</div>
-</UserContext.Provider>
+              <Routes>
+                <Route path='/home' element={<HomePage User={'user'} />} />
+                <Route path='/stocks' element={
+                  <ProtectedRoute>
+                    <StocksPage />
+                  </ProtectedRoute>} />
+                <Route path='/analyze' element={<ProtectedRoute><AnalyzePage /></ProtectedRoute>} />
+                <Route path='/self_analyze' element={<ProtectedRoute><SelfAnalyzePage /></ProtectedRoute>} />
+                <Route path='/search' element={<ProtectedRoute><SearchPage /></ProtectedRoute>} />
+                <Route path="/find_stock" element={<ProtectedRoute><AddStockPage /></ProtectedRoute>} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/support" element={<ProtectedRoute><SendEmail /></ProtectedRoute>} />
+              </Routes>
+            </Router>
+          </Container>
+        </main>
+      </div>
+    </UserContext.Provider>
   );
 };
 
