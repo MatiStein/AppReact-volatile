@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import StockNameContainer from '../../page_layout/StockNameContainer'
 import StocksList from '../../page_layout/StocksList'
 import config from '../../Utils/Config'
 import SelfAnalyzeDetails from './components/SelfAnalyzeDetails'
@@ -31,6 +32,7 @@ const SelfAnalyzePage = () => {
             <div className='stocks-page-container'>
                 <StocksList stockChangeHandler={getCurrentStockFromStockList} stocks={stocksList} />
                 <SelfAnalyzeDetails stock={currentStock} />
+                
             </div>
         </div>
 

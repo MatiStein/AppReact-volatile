@@ -1,0 +1,45 @@
+
+<span class="loading"></span>
+
+.loading {
+    width: 250px;
+    display: block;
+    height: 15px;
+    margin: 0px auto; 
+    border-radius: 2px;
+    background-color: #e6e6e6;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.loading:before {
+    content:'';
+    height: 15px;
+    width: 60px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #808080;
+    border-radius: 2px;
+    -webkit-animation: initial-loading 1s linear infinite;
+    animation: initial-loading 1s linear infinite;
+}
+
+@-webkit-keyframes initial-loading {
+    0% {
+        left: -68px;
+    }
+    100% {
+        left: 250px;
+    }
+}
+
+@keyframes initial-loading {
+    0% {
+        left: -68px;
+    }
+    100% {
+        left: 250px;
+    }
+}

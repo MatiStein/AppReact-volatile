@@ -31,12 +31,14 @@ const StocksPage = () => {
     }, [])
 
     return (
+        // <UserContext.Provider value={{ currentStock, setCurrentStock }}>
         <div>
             <div className='stocks-page-container'>
                 <StocksList stockChangeHandler={getCurrentStockFromStockList} stocks={stocksList} />
                 <StockDetails stock={currentStock} />
             </div>
         </div>
+        // </UserContext.Provider>
     )
 }
 

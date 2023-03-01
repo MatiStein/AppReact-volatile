@@ -11,8 +11,6 @@ import AddStockPage from './pages/AddStockPage/AddStockPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
 import StocksPage from './pages/StocksPage/StocksPage';
-import axios from 'axios';
-import Config from './Utils/Config';
 import SendEmail from './pages/SupportPage/SendEmail';
 import { UserContext } from "./UserContext";
 import ProtectedRoute from './page_layout/ProtectedRoute';

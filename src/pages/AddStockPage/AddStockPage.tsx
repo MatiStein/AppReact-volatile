@@ -25,6 +25,7 @@ const AddStockPage = () => {
                     Put the 'Ticker', in Uppercase Characters. <br></br>
                     It takes time to Download,
                     and even more to process... Bear with me.
+                    In case of an error, report the ticker and error code.
                 </Card.Text>
                 <input onChange={(e) => { setStockTicker(e.target.value) }}
                     type="text" placeholder="Add a 'TICKER'" />

@@ -21,7 +21,7 @@ const Header = () => {
 
 
     return (
-        <Navbar bg='light' variant='light' expand='lg' collapseOnSelect>
+        <Navbar bg='secondary' variant='light' expand='lg' collapseOnSelect>
             <Container>
                 <Navbar.Brand>Volatile Means Σίγμα</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />

@@ -18,7 +18,7 @@ const StocksPage = () => {
 const StocksList = (props: { stocks: string[], stockChangeHandler: Function }) => {
     return (
         <div className="stocks-list-container">
-            <h3>Stocks:</h3>
+            <h4>Stocks:</h4>
             <select className="stocks-list" onChange={(event) => { props.stockChangeHandler(event.target.value) }}>
                 <option value="" disabled selected>Select a Ticker</option>
                 {props.stocks?.map((stockName: string) => {

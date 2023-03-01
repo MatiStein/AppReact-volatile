@@ -9,6 +9,7 @@ class Config {
     public stock_list_url = this.baseUrl + 'ticker_list';
     public get_top_3_ratings_url = this.baseUrl + 'get_top_3_ratings';
     public get_latest_3_ratings_url = this.baseUrl + 'get_latest_3_ratings';
+    public get_name_from_ticker_url = this.baseUrl + 'get_name_from_ticker/';
 
     public user_ticker_url = this.baseUrl + 'user_ticker';
     public registerUrl = this.baseUrl + 'register';

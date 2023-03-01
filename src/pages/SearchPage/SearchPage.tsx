@@ -11,7 +11,7 @@ function SearchPage() {
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const response = await axios.get(`https://api.polygon.io/v2/reference/news?ticker=${ticker}&published_utc.gte=${date}&order=asc&limit=20&sort=published_utc&apiKey=nyd1QVoAqt4QVkHYYMqe_5kvFfN40G8D`);
+        const response = await axios.get(`https://api.polygon.io/v2/reference/news?ticker=${ticker}&published_utc.gte=${date}&order=asc&limit=30&sort=published_utc&apiKey=nyd1QVoAqt4QVkHYYMqe_5kvFfN40G8D`);
         const data = response.data;
         setResponseJson(data);
     };
@@ -41,7 +41,7 @@ function SearchPage() {
                         Date: <input type="text" value={date} placeholder='YYYY-mm-dd' style={{ marginLeft: '10px' }}
                             onChange={e => setDate(e.target.value)} />
                     </label>
-                    <Button type="submit" style={{ marginLeft: '10px' }} >Search</Button>
+                    <Button variant="info" type="submit" style={{ marginLeft: '10px' }} >Search</Button>
                 </form>
                 {responseJson && (
                     <code
@@ -59,7 +59,7 @@ function SearchPage() {
                         <input type="text" value={searchTerm} style={{ width: '150%', marginLeft: '5px' }}
                             placeholder='TICKER stock at YYYY-mm-dd' onChange={e => setSearchTerm(e.target.value)} />
                     </label>
-                    <Button type="submit" style={{ marginLeft: '100px' }}>Search</Button>
+                    <Button variant="info" type="submit" style={{ marginLeft: '100px' }}>Search</Button>
                 </form>
                 {searchResults.length > 0 && (
                     <ul>
