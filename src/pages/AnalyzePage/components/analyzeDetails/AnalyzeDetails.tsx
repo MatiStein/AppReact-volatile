@@ -1,12 +1,22 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react'
 import { Pagination, Table } from 'react-bootstrap';
+import { StockNameContext } from '../../../../page_layout/StockNameContext';
 import { UserContext } from '../../../../UserContext';
 import config from '../../../../Utils/Config';
+
+
+interface AnalyzeDetailsProps {
+    stock: string;
+    stockName: string;
+}
+
 
 const AnalyzeDetails = (props: { stock: string }) => {
     const [user, setUser] = useContext(UserContext)
     const [IrregularStockDetails, setIrregularStockDetails] = useState([])
+    const stockNameContext = useContext(StockNameContext);
+    const stockName = stockNameContext.stockName;
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(15);
     console.log(props.stock);
@@ -54,7 +64,10 @@ const AnalyzeDetails = (props: { stock: string }) => {
     return (
 
         <div>
-            <h3>{props.stock}</h3>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+                <h3 style={{ margin: 0 }}>{props.stock}</h3>
+                <h6 style={{ margin: 0, marginLeft: '15px' }}>{stockNameContext.stockName}</h6>
+            </div>
             <h6>Function using methods 'Moving Average' & 'Standard deviation'
                 of 30 trade days. Rating(n) is Vol = (n-1) * AvgVol</h6>
             <Table bordered size="sm">
@@ -74,7 +87,7 @@ const AnalyzeDetails = (props: { stock: string }) => {
                         <td>{stockDate.ticker}</td>
                         <td>{(stockDate.volume / 1000000).toFixed(3)}</td>
                         <td>{(stockDate.avg_volume / 1000000).toFixed(3)}</td>
-                        <td>{Number(stockDate.rating).toFixed(0)}</td>
+                        <td>{Number(stockDate.rating).toFixed(1)}</td>
                         <td>{(stockDate.dev_volume / 1000000).toFixed(3)}</td>
                         <td>{stockDate.time.split("T")[0]}</td>
                         <td>{Number(stockDate.open_price).toFixed(2)}</td>

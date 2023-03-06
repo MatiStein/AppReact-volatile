@@ -4,10 +4,13 @@ import StocksList from '../../page_layout/StocksList';
 import config from '../../Utils/Config';
 import AnalyzeDetails from './components/analyzeDetails/AnalyzeDetails';
 import "./AnalyzePage.css";
+import StockNameProvider from '../../page_layout/StockNameContext';
+
 
 const AnalyzePage = () => {
     const [stocksList, setStocksList] = useState([])
     const [currentStock, setCurrentStock] = useState("")
+    
 
     const getStocks = () => {
         const stocksListUrl = config.stock_list_url
@@ -17,9 +20,7 @@ const AnalyzePage = () => {
     }
 
     const getCurrentStockFromStockList = (stockName: string) => {
-        console.log(stockName)
         setCurrentStock(stockName)
-
     }
 
     useEffect(() => {
@@ -32,7 +33,10 @@ const AnalyzePage = () => {
         <div>
             <div className='stocks-page-container'>
                 <StocksList stockChangeHandler={getCurrentStockFromStockList} stocks={stocksList} />
-                <AnalyzeDetails stock={currentStock} />
+                <StockNameProvider stock={currentStock} setStockName={() => {}}>
+                    <AnalyzeDetails stock={currentStock} />
+                </StockNameProvider>
+
             </div>
         </div>
 

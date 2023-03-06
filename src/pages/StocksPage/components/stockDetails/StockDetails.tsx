@@ -3,26 +3,30 @@ import { useContext, useEffect, useState } from "react";
 import DatesFeature from "../../../../page_layout/DatesFeature";
 import config from "../../../../Utils/Config";
 import "./StockDetails.css";
+import { StockNameContext } from "../../../../page_layout/StockNameContext";
 import { UserContext } from '../../../../UserContext';
 import {
-    Line,
-    XAxis,
-    YAxis,
-    CartesianGrid,
-    Tooltip,
-    Legend,
-    Bar,
-    ComposedChart
+    Line, XAxis, YAxis, CartesianGrid, Tooltip,
+    Legend, Bar, ComposedChart
 } from "recharts";
 
 
-const StockDetails = (props: { stock: string }) => {
+interface StockDetailsProps {
+    stock: string;
+    stockName: string;
+}
+
+const StockDetails: React.FC<StockDetailsProps> = ({ stock }) => {
     const [user, setUser] = useContext(UserContext)
     const [stockDetails, setStockDetails] = useState([])
     const date = new Date().toISOString().split("T")[0];
     const [fromDate, setFromDate] = useState("2020-01-01")
     const [toDate, setToDate] = useState(date)
-
+    const stockNameContext = useContext(StockNameContext);
+    const [stockName, setStockName] = useState(stockNameContext.stockName);
+    useEffect(() => {
+        setStockName(stockNameContext.stockName);
+    }, [stockNameContext.stockName]);
 
     const fromDateHandler = (date: string) => {
         setFromDate(date)
@@ -30,25 +34,25 @@ const StockDetails = (props: { stock: string }) => {
     const toDateHandler = (date: string) => {
         setToDate(date)
     }
-    console.log(props.stock);
-    console.log({ headers: { "Authorization": user } })
 
-    const getStockDetails = (stock: string) => {
+    const getStockDetails = async (stock: string) => {
         if (stock !== "") {
-            axios.get(config.stocksUrl + "?ticker=" + stock + "&from_date=" + fromDate + "&to_date=" + toDate, { headers: { "Authorization": user } }).then((response) => {
-                console.log(response.data);
-                setStockDetails(response.data);
-            })
+            await axios
+                .get(config.stocksUrl + "?ticker=" + stock + "&from_date=" + fromDate + "&to_date=" + toDate, { headers: { "Authorization": user } })
+                .then((response) => {
+                    setStockDetails(response.data);
+                });
         }
-    }
+    };
 
     useEffect(() => {
-        getStockDetails(props.stock)
-    }, [props.stock, fromDate, toDate, user])
+        getStockDetails(stock)
+    }, [stock, fromDate, toDate, user])
 
     if (stockDetails.length === 0) {
         return <div>Please choose a Stock for details</div>
     }
+
     const data = stockDetails.map((stockDate: any, index: number) => {
         return {
             time: stockDate.time.split("T")[0],
@@ -64,7 +68,11 @@ const StockDetails = (props: { stock: string }) => {
 
     return (
         <div>
-            <h3>{props.stock}</h3>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+                <h3 style={{ margin: 0 }}>{stock}</h3>
+                <h6 style={{ margin: 0, marginLeft: '15px' }}>{stockNameContext.stockName}</h6>
+            </div>
+
             <DatesFeature multiplierSetter={null} fromDateSetter={fromDateHandler} toDateSetter={toDateHandler} addMultiplierFilter={false} />
             <ComposedChart
                 width={1000}

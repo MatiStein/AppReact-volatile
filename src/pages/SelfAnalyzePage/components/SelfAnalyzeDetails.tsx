@@ -4,6 +4,13 @@ import config from '../../../Utils/Config';
 import DatesFeature from '../../../page_layout/DatesFeature';
 import { Button, Table } from 'react-bootstrap';
 import { UserContext } from '../../../UserContext';
+import { StockNameContext } from '../../../page_layout/StockNameContext';
+
+
+interface SelfAnalyzeDetailsProps {
+  stock: string;
+  stockName: string;
+}
 
 
 const SelfAnalyzeDetails = (props: { stock: string }) => {
@@ -13,6 +20,8 @@ const SelfAnalyzeDetails = (props: { stock: string }) => {
   const [toDate, setToDate] = useState(date)
   const [multiplier, setMultiplier] = useState(2.3263)
   const [selfAnalyzedStocks, setSelfAnalyzedStocks] = useState<any>()
+  const stockNameContext = useContext(StockNameContext);
+  const stockName = stockNameContext.stockName;
 
   const fromDateHandler = (date: string) => {
     setFromDate(date)
@@ -42,13 +51,16 @@ const SelfAnalyzeDetails = (props: { stock: string }) => {
     axios.get(config.analyzeQueryUrl + `?ticker=${props.stock}&from_date=${fromDate}&to_date=${toDate}&multi=${multiplier}`, { headers: { "Authorization": user } })
       .then((response) => {
         setSelfAnalyzedStocks(response?.data)
-        console.log(response)
-      })
+        })
   }
 
   return (
     <div>
-      <h3>{props.stock}</h3>
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+                <h3 style={{ margin: 0 }}>{props.stock}</h3>
+                <h6 style={{ margin: 0, marginLeft: '15px' }}>{stockName}</h6>
+            </div>
+      <span className="stock-name-context">{stockName}</span>
       <h6>Function to find dates which has Volume above the Average by Multiplier. Rating = Vol/AvgVol</h6>
       {props.stock && <div><DatesFeature fromDateSetter={fromDateHandler} addMultiplierFilter={true}
         toDateSetter={toDateHandler} multiplierSetter={multiplierHandler} />
