@@ -69,7 +69,7 @@ const AnalyzeDetails = (props: { stock: string }) => {
                 <h6 style={{ margin: 0, marginLeft: '15px' }}>{stockNameContext.stockName}</h6>
             </div>
             <h6>Function using methods 'Moving Average' & 'Standard deviation'
-                of 30 trade days. Rating(n) is Vol = (n-1) * AvgVol</h6>
+                of 30 trade days. Rating=(Vol-Avg)/Avg</h6>
             <Table bordered size="sm">
                 <tr>
                     <th>Ticker Name</th>

@@ -56,11 +56,11 @@
  */
 
 .profit-marker {
-  background-color: rgba(120, 246, 120, 0.743);
+  background-color: rgba(122, 244, 122, 0.743);
 }
 
 .loss-marker {
-  background-color: rgba(239, 99, 99, 0.768);
+  background-color: rgba(244, 122, 122, 0.768);
 }
 
 main {
