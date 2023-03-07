@@ -60,7 +60,6 @@ const SelfAnalyzeDetails = (props: { stock: string }) => {
                 <h3 style={{ margin: 0 }}>{props.stock}</h3>
                 <h6 style={{ margin: 0, marginLeft: '15px' }}>{stockName}</h6>
             </div>
-      <span className="stock-name-context">{stockName}</span>
       <h6>Function to find dates which has Volume above the Average by Multiplier. Rating = Vol/AvgVol</h6>
       {props.stock && <div><DatesFeature fromDateSetter={fromDateHandler} addMultiplierFilter={true}
         toDateSetter={toDateHandler} multiplierSetter={multiplierHandler} />
